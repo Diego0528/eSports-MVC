@@ -3,7 +3,7 @@
 **Autor:** Diego  
 **Versión:** 1.0  
 **Lenguaje:** Java  
-**Framework:** JavaFX
+**Framework:** JavaFX  
 **Base de Datos:** SQL Server
 
 ---
