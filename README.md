@@ -3,7 +3,7 @@
 **Autor:** Diego  
 **Versión:** 1.0  
 **Lenguaje:** Java  
-**Framework:** Swing  
+**Framework:** JavaFX
 **Base de Datos:** SQL Server
 
 ---
@@ -20,7 +20,7 @@ Este proyecto busca simplificar la organización de torneos de videojuegos, reem
 - Creación de torneos con reglas personalizadas.  
 - Seguimiento de enfrentamientos y resultados.  
 - Visualización de estadísticas y clasificaciones.  
-- Interfaz gráfica construida con **Java Swing**.  
+- Interfaz gráfica construida con **JavaFX**.  
 
 ---
 
@@ -28,9 +28,10 @@ Este proyecto busca simplificar la organización de torneos de videojuegos, reem
 | Categoría | Tecnología |
 |------------|-------------|
 | Lenguaje | Java |
-| GUI | Swing |
+| GUI | JavaFx |
 | Base de datos | SQL Server |
 | Patrón de diseño | MVC |
 | Control de versiones | Git + GitHub |
 
 ---
+
