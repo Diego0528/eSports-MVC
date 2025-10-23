@@ -1,16 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.ImageView?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.diego.esports.controlador.MainController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<BorderPane fx:id="root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../css/mainCss.css">
+    <top>
+        <HBox spacing="20" styleClass="topbar">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+
+            <!-- LOGO / TÍTULO -->
+            <Label text="eSports Manager" styleClass="logo-text"/>
+
+            <!-- BUSCADOR -->
+            <TextField fx:id="searchField" promptText="Buscar jugador, equipo o torneo..." HBox.hgrow="ALWAYS"
+                       styleClass="search-bar"/>
+
+            <!-- PERFIL / USUARIO -->
+            <Button text="Perfil" styleClass="button-primary"/>
+        </HBox>
+    </top>
+
+    <!-- 🔹 SIDEBAR IZQUIERDO -->
+    <left>
+        <VBox spacing="10" styleClass="sidebar">
+            <padding>
+                <Insets top="20" right="10" bottom="20" left="10"/>
+            </padding>
+
+            <Button text="🏠  Inicio" styleClass="sidebar-button"/>
+            <Button text="🎮  Torneos" styleClass="sidebar-button"/>
+            <Button text="👥  Equipos" styleClass="sidebar-button"/>
+            <Button text="🧑‍💻  Jugadores" styleClass="sidebar-button"/>
+            <Button text="📊  Estadísticas" styleClass="sidebar-button"/>
+            <Button text="⚙️  Configuración" styleClass="sidebar-button"/>
+        </VBox>
+    </left>
+
+    <!-- 🔹 ÁREA CENTRAL (Panel dinámico) -->
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-area">
+            <Label text="Bienvenido a la Plataforma de Torneos eSports"
+                   styleClass="welcome-text"/>
+        </StackPane>
+    </center>
+</BorderPane>
