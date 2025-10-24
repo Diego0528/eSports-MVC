@@ -1,11 +1,13 @@
 package com.diego.esports.modelo.entidades;
 
-import com.diego.esports.utils.ConexionDB;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import com.diego.esports.utils.ConexionDB;
 
-public class Jugador {
+public class Jugador {/*
 
     public List<Jugador> obtenerTodos() {
         List<Jugador> lista = new ArrayList<>();
@@ -26,5 +28,5 @@ public class Jugador {
             e.printStackTrace();
         }
         return lista;
-    }
+    }*/
 }

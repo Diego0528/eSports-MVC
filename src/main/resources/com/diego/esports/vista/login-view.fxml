@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.GaussianBlur?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.diego.esports.controlador.LoginController" stylesheets="@../css/login-theme.css">
+
+    <!-- 🔹 Fondo animado o difuminado -->
+    <Pane fx:id="backgroundPane" styleClass="background">
+        <effect>
+            <GaussianBlur radius="8"/>
+        </effect>
+    </Pane>
+
+    <!-- 🔹 Contenedor del formulario -->
+    <VBox spacing="20" alignment="CENTER" styleClass="login-box">
+        <Label text="eSports Manager" styleClass="login-title"/>
+
+        <VBox spacing="10" alignment="CENTER_LEFT" styleClass="form">
+            <Label text="Usuario" styleClass="form-label"/>
+            <TextField fx:id="usernameField" promptText="Ingresa tu usuario" styleClass="form-input"/>
+
+            <Label text="Contraseña" styleClass="form-label"/>
+            <PasswordField fx:id="passwordField" promptText="********" styleClass="form-input"/>
+        </VBox>
+
+        <Button text="Iniciar Sesión" styleClass="button-primary" fx:id="loginButton"/>
+
+        <Label text="¿No tienes cuenta? Regístrate aquí" styleClass="link-label"/>
+    </VBox>
+</StackPane>

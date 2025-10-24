@@ -1,0 +1,73 @@
+.root {
+    -fx-font-family: 'Poppins';
+    -fx-background-color: linear-gradient(to bottom right, #0D0D10, #1E1E26);
+}
+
+/* 🔹 Fondo animado o difuminado */
+.background {
+    -fx-background-image: url("../images/login-bg.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-opacity: 0.7;
+}
+
+/* 🔹 Caja de login */
+.login-box {
+    -fx-background-color: rgba(22, 22, 28, 0.8);
+    -fx-padding: 40 60;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(three-pass-box, rgba(138, 43, 226, 0.3), 20, 0, 0, 0);
+}
+
+/* 🔹 Título */
+.login-title {
+    -fx-text-fill: #8A2BE2;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 10 0;
+}
+
+/* 🔹 Inputs */
+.form-label {
+    -fx-text-fill: #A0A0B0;
+    -fx-font-size: 12px;
+}
+
+.form-input {
+    -fx-background-color: #1E1E26;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 8;
+    -fx-padding: 10;
+    -fx-prompt-text-fill: #777;
+    -fx-border-color: transparent transparent #8A2BE2 transparent;
+}
+
+.form-input:focused {
+    -fx-border-color: #A64DFF;
+}
+
+/* 🔹 Botón principal */
+.button-primary {
+    -fx-background-color: #8A2BE2;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 10 40;
+    -fx-effect: dropshadow(three-pass-box, rgba(138,43,226,0.4), 10, 0, 0, 0);
+}
+
+.button-primary:hover {
+    -fx-background-color: #A64DFF;
+}
+
+/* 🔹 Texto inferior */
+.link-label {
+    -fx-text-fill: #A0A0B0;
+    -fx-font-size: 12px;
+}
+.link-label:hover {
+    -fx-text-fill: #8A2BE2;
+}
+
+.form {
+}
