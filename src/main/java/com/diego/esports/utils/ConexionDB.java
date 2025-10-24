@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConexionDB {
     private static final String URL = "jdbc:sqlserver://PHA-SISTEMAS-PC\\SMSS:51901;"
-            + "databaseName=;"
+            + "databaseName=eSportsdb;"
             + "encrypt=false;"
             + "trustServerCertificate=true";
     private static final String USER = "sa";
@@ -19,15 +19,6 @@ public class ConexionDB {
         } catch (SQLException e) {
             System.err.println("Error de conexión: " + e.getMessage());
             throw e;
-        }
-    }
-    public static void testConnection() {
-        try (Connection conn = getConnection()) {
-            System.out.println("¡Conexión exitosa a la base de datos Contactosdb!");
-            System.out.println("Estado de la conexión: " + !conn.isClosed());
-        } catch (SQLException e) {
-            System.err.println("Error al conectar: " + e.getMessage());
-            e.printStackTrace();
         }
     }
 }

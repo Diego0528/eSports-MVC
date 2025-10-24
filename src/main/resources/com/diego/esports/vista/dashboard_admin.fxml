@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="root" stylesheets="@../css/dark-theme.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <HBox spacing="20" styleClass="topbar">
+            <padding>
+                <Insets bottom="10" left="20" right="20" top="10" />
+            </padding>
+
+            <!-- LOGO / TÍTULO -->
+            <Label styleClass="logo-text" text="eSports Manager" />
+
+            <!-- BUSCADOR -->
+            <TextField fx:id="searchField" promptText="Buscar jugador, equipo o torneo..." styleClass="search-bar" HBox.hgrow="ALWAYS" />
+
+            <!-- PERFIL / USUARIO -->
+            <Button styleClass="button-primary" text="Perfil" />
+        </HBox>
+    </top>
+
+    <!-- 🔹 SIDEBAR IZQUIERDO -->
+    <left>
+        <VBox spacing="10" styleClass="sidebar">
+            <padding>
+                <Insets bottom="20" left="10" right="10" top="20" />
+            </padding>
+
+            <Button styleClass="sidebar-button" text="🏠  Inicio" />
+            <Button styleClass="sidebar-button" text="🎮  Torneos" />
+            <Button styleClass="sidebar-button" text="👥  Equipos" />
+            <Button styleClass="sidebar-button" text="🧑‍💻  Jugadores" />
+            <Button styleClass="sidebar-button" text="📊  Estadísticas" />
+            <Button styleClass="sidebar-button" text="⚙️  Configuración" />
+        </VBox>
+    </left>
+
+    <!-- 🔹 ÁREA CENTRAL (Panel dinámico) -->
+    <center>
+        <StackPane fx:id="contentArea" prefHeight="404.0" prefWidth="646.0" styleClass="content-area">
+            <Label styleClass="welcome-text" text="Bienvenido a la Plataforma de Torneos eSports" />
+        </StackPane>
+    </center>
+</BorderPane>

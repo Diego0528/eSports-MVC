@@ -3,14 +3,6 @@
     -fx-background-color: linear-gradient(to bottom right, #0D0D10, #1E1E26);
 }
 
-/* 🔹 Fondo animado o difuminado */
-.background {
-    -fx-background-image: url("../images/login-bg.jpg");
-    -fx-background-size: cover;
-    -fx-background-position: center;
-    -fx-opacity: 0.7;
-}
-
 /* 🔹 Caja de login */
 .login-box {
     -fx-background-color: rgba(22, 22, 28, 0.8);
