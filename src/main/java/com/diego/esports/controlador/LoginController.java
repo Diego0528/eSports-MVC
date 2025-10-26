@@ -52,8 +52,6 @@ public class LoginController {
 
     private Timeline gradientAnimation;
 
-
-
     private void iniciarSesion() {
         String user = usernameField.getText();
         String pass = passwordField.getText();
@@ -61,16 +59,20 @@ public class LoginController {
         Usuarios usuario = datos.encontrarUsuario(user, pass);
 
         if (usuario != null) {
-            System.out.println("Inicio correcto: " + usuario.getRol());
+            int rol = datos.saberRol(usuario.getId());
 
-            switch (usuario.getRol().toUpperCase()) {
-                case "ADMIN":
+
+            switch (rol) {
+                case 1:
+                    System.out.println("Inicio correcto Admin: " + rol);
                     SceneManager.cambiarEscena(Paths.AdminView);
                     break;
-                case "ORGANIZADOR   ":
+                case 2:
+                    System.out.println("Inicio correcto organizador: " + rol );
                     SceneManager.cambiarEscena(Paths.OrganizadorView);
                     break;
-                case "JUGADOR":
+                case 3:
+                    System.out.println("Inicio correcto jugador: " + rol);
                     SceneManager.cambiarEscena(Paths.JugadorView);
                     break;
                 default:
@@ -80,6 +82,7 @@ public class LoginController {
             System.out.println("Usuario o contraseña incorrectos");
         }
     }
+
 
     private void createAnimatedBackground() {
         // 🌈 Creamos un gradiente inicial con colores vivos

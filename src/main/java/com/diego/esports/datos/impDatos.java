@@ -44,8 +44,7 @@ public class impDatos implements intDatos {
                     return new Usuarios(
                             rs.getInt("id_usuario"),
                             rs.getString("nombre_usuario"),
-                            rs.getString("contraseña"),
-                            rs.getString("rol")
+                            rs.getString("contraseña")
                     );
                 }
             }
@@ -53,5 +52,22 @@ public class impDatos implements intDatos {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public int saberRol(int Id){
+        int rol = 0;
+        String sql = "SELECT * FROM UsuarioRol WHERE id_usuario = ?";
+        try (Connection conn = ConexionDB.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setInt(1, Id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    rol = rs.getInt("id_rol");
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return rol;
     }
 }

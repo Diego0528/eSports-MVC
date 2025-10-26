@@ -1,0 +1,59 @@
+@import url("dark-theme.css");
+
+.players-header {
+    -fx-background-color: #16161C;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.players-title {
+    -fx-fill: #8A2BE2;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.search-bar {
+    -fx-background-color: #1E1E26;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 8;
+    -fx-padding: 8 12;
+    -fx-prompt-text-fill: #A0A0B0;
+}
+
+.players-content {
+    -fx-padding: 20;
+    -fx-background-color: #0D0D10;
+}
+
+/* Tabla */
+.table-view {
+    -fx-background-color: #16161C;
+    -fx-background-radius: 10;
+    -fx-table-cell-border-color: transparent;
+    -fx-border-color: #1E1E26;
+    -fx-border-radius: 10;
+    -fx-padding: 10;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #1E1E26;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 40;
+    -fx-border-color: transparent;
+    -fx-background-color: #1E1E26;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #A0A0B0;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+}
+
+.table-row-cell:filled:selected, .table-row-cell:filled:hover {
+    -fx-background-color: rgba(138, 43, 226, 0.3);
+}

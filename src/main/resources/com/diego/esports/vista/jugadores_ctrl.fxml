@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.diego.esports.controlador.JugadoresController"
+            stylesheets="@../css/players-theme.css">
+
+    <!-- 🔹 Header de la pestaña -->
+    <top>
+        <HBox spacing="20" styleClass="players-header">
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20"/>
+            </padding>
+            <Text text="Administrar Jugadores" styleClass="players-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="searchField" promptText="Buscar jugador..." styleClass="search-bar"/>
+            <Button text="+ Agregar Jugador" styleClass="button-primary" fx:id="addPlayerButton"/>
+        </HBox>
+    </top>
+
+    <!-- 🔹 Contenido principal -->
+    <center>
+        <VBox spacing="15" styleClass="players-content">
+            <TableView fx:id="playersTable" prefHeight="500">
+                <columns>
+                    <TableColumn text="ID" fx:id="colId" prefWidth="70"/>
+                    <TableColumn text="Nombre" fx:id="colNombre" prefWidth="180"/>
+                    <TableColumn text="Nickname" fx:id="colNickname" prefWidth="150"/>
+                    <TableColumn text="Equipo" fx:id="colEquipo" prefWidth="150"/>
+                    <TableColumn text="País" fx:id="colPais" prefWidth="100"/>
+                    <TableColumn text="Acciones" fx:id="colAcciones" prefWidth="150"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>
+

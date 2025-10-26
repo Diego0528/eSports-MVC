@@ -2,6 +2,7 @@ package com.diego.esports.application;
 
 import com.diego.esports.datos.impDatos;
 import com.diego.esports.datos.intDatos;
+import com.diego.esports.modelo.dao.SceneManager;
 import com.diego.esports.utils.Paths;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        SceneManager.setStage(primaryStage);
         Parent root = FXMLLoader.load((getClass().getResource(Paths.LoginView)));
         Scene scene = new Scene(root);
 
