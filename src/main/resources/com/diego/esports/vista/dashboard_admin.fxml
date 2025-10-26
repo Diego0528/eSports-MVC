@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="root" prefHeight="480.0" prefWidth="843.0" stylesheets="@../css/dark-theme.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="root" prefHeight="480.0" prefWidth="843.0" stylesheets="@../css/dark-theme.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.diego.esports.controlador.dbAdmin_Controller">
     <top>
         <HBox spacing="20" styleClass="topbar">
             <padding>

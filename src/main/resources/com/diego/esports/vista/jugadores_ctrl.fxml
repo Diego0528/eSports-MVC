@@ -1,47 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.diego.esports.controlador.JugadoresController"
-            stylesheets="@../css/players-theme.css">
-
+<BorderPane stylesheets="@../css/players-theme.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.diego.esports.controlador.JugadoresController">
     <!-- 🔹 Header de la pestaña -->
     <top>
         <HBox spacing="20" styleClass="players-header">
             <padding>
-                <Insets top="15" right="20" bottom="15" left="20"/>
+                <Insets bottom="15" left="20" right="20" top="15" />
             </padding>
-            <Text text="Administrar Jugadores" styleClass="players-title"/>
-            <Region HBox.hgrow="ALWAYS"/>
-            <TextField fx:id="searchField" promptText="Buscar jugador..." styleClass="search-bar"/>
-            <Button text="+ Agregar Jugador" styleClass="button-primary" fx:id="addPlayerButton"/>
+            <Text styleClass="players-title" text="Administrar Jugadores" />
+            <Region HBox.hgrow="ALWAYS" />
+            <TextField fx:id="searchField" promptText="Buscar jugador..." styleClass="search-bar" />
+            <Button fx:id="addPlayerButton" styleClass="button-primary" text="+ Agregar Jugador" />
         </HBox>
     </top>
 
     <!-- 🔹 Contenido principal -->
     <center>
         <VBox spacing="15" styleClass="players-content">
-            <TableView fx:id="playersTable" prefHeight="500">
+            <TableView fx:id="tblJugadores" prefHeight="500">
                 <columns>
-                    <TableColumn text="ID" fx:id="colId" prefWidth="70"/>
-                    <TableColumn text="Nombre" fx:id="colNombre" prefWidth="180"/>
-                    <TableColumn text="Nickname" fx:id="colNickname" prefWidth="150"/>
-                    <TableColumn text="Equipo" fx:id="colEquipo" prefWidth="150"/>
-                    <TableColumn text="País" fx:id="colPais" prefWidth="100"/>
-                    <TableColumn text="Acciones" fx:id="colAcciones" prefWidth="150"/>
+                    <TableColumn fx:id="colId" prefWidth="70" text="ID" />
+                    <TableColumn fx:id="colNombre" prefWidth="180" text="Nombre" />
+                    <TableColumn fx:id="colNickname" prefWidth="150" text="Nickname" />
+                    <TableColumn fx:id="colEquipo" prefWidth="150" text="Equipo" />
+                    <TableColumn fx:id="colAcciones" prefWidth="150" text="Acciones" />
                 </columns>
             </TableView>
         </VBox>
     </center>
 </BorderPane>
-

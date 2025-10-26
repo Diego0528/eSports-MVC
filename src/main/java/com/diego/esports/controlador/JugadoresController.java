@@ -1,41 +1,48 @@
 package com.diego.esports.controlador;
 
+import com.diego.esports.datos.impDatos;
 import com.diego.esports.modelo.entidades.Jugador;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class JugadoresController {
 
-    @FXML private TableView<Jugador> playersTable;
+    public Button addPlayerButton;
+    @FXML private TableView<Jugador> tblJugadores;
     @FXML private TableColumn<Jugador, Integer> colId;
     @FXML private TableColumn<Jugador, String> colNombre;
     @FXML private TableColumn<Jugador, String> colNickname;
     @FXML private TableColumn<Jugador, String> colEquipo;
-    @FXML private TableColumn<Jugador, String> colPais;
     @FXML private TableColumn<Jugador, Void> colAcciones;
     @FXML private TextField searchField;
 
+    private final impDatos datos = new impDatos();
+
     @FXML
     public void initialize() {
-        // Simulación de datos (puedes conectar esto con tu modelo o DB)
-        ObservableList<Jugador> jugadores = FXCollections.observableArrayList(
-                new Jugador(1, "Diego López", "DLopez", "Raptors", "México"),
-                new Jugador(2, "Ana Torres", "Shadow", "Phoenix", "Chile"),
-                new Jugador(3, "Carlos Ruiz", "StormX", "Dragons", "Argentina")
-        );
 
-        colId.setCellValueFactory(cell -> cell.getValue().idProperty().asObject());
-        colNombre.setCellValueFactory(cell -> cell.getValue().nombreProperty());
-        colNickname.setCellValueFactory(cell -> cell.getValue().nicknameProperty());
-        colEquipo.setCellValueFactory(cell -> cell.getValue().equipoProperty());
-        colPais.setCellValueFactory(cell -> cell.getValue().paisProperty());
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        colNickname.setCellValueFactory(new PropertyValueFactory<>("nickname"));
+        colEquipo.setCellValueFactory(new PropertyValueFactory<>("equipo"));
+        actualizarTabla();
 
         addActionButtons();
-        playersTable.setItems(jugadores);
+    }
+    private void actualizarTabla() {
+        List<Jugador> jugador = datos.listarJugadores();
+        tblJugadores.getItems().clear();
+        tblJugadores.getItems().addAll(jugador);
+        tblJugadores.refresh();
+
     }
 
     private void addActionButtons() {

@@ -63,7 +63,7 @@ public class LoginController {
 
 
             switch (rol) {
-                case 1:
+                case 3:
                     System.out.println("Inicio correcto Admin: " + rol);
                     SceneManager.cambiarEscena(Paths.AdminView);
                     break;
@@ -71,7 +71,7 @@ public class LoginController {
                     System.out.println("Inicio correcto organizador: " + rol );
                     SceneManager.cambiarEscena(Paths.OrganizadorView);
                     break;
-                case 3:
+                case 1:
                     System.out.println("Inicio correcto jugador: " + rol);
                     SceneManager.cambiarEscena(Paths.JugadorView);
                     break;

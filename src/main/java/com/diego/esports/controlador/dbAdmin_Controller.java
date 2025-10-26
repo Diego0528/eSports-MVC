@@ -8,10 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-
-import javax.swing.*;
-
 public class dbAdmin_Controller {
+
 
     @FXML
     private Button btnCrudJugadores;
@@ -24,6 +22,7 @@ public class dbAdmin_Controller {
 
     @FXML
     private TextField searchField;
+
 
     @FXML
     void CrudJugadores(ActionEvent event) {

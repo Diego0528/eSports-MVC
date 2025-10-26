@@ -1,13 +1,13 @@
 package com.diego.esports.datos;
 
 
+import com.diego.esports.modelo.entidades.Jugador;
 import com.diego.esports.modelo.entidades.Usuarios;
 import com.diego.esports.utils.ConexionDB;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class impDatos implements intDatos {
     public void existe() {
@@ -69,5 +69,31 @@ public class impDatos implements intDatos {
             e.printStackTrace();
         }
         return rol;
+    }
+
+    public List<Jugador> listarJugadores(){
+        List<Jugador> listaJugadores = new ArrayList<>();
+        String sql = "SELECT * FROM dbo.vw_JugadoresDetalle";
+
+        try (Connection conn = ConexionDB.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                Jugador jugador = new Jugador();
+                jugador.setId(rs.getInt("id_jugador"));
+                jugador.setNickname(rs.getString("nickname"));
+                jugador.setNombre(rs.getString("nombre_usuario"));
+                jugador.setEmail(rs.getString("email"));
+                jugador.setRol(rs.getString("rol"));
+                jugador.setEquipo(rs.getString("nombre_equipo"));
+                listaJugadores.add(jugador);
+            }
+
+        }catch (SQLException e){
+            System.out.println("Error al listar jugadores: " + e.getMessage());
+        }
+
+        return listaJugadores;
     }
 }
