@@ -11,4 +11,5 @@ public class Paths {
 
     // Gestor de Jugadores
     public static final String JugadoresCTRL = "/com/diego/esports/vista/jugadores_ctrl.fxml";
+    public static final String Registrarse = "/com/diego/esports/vista/registro_view.fxml";
 }

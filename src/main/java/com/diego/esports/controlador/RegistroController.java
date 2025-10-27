@@ -1,11 +1,10 @@
 package com.diego.esports.controlador;
-
-
 import com.diego.esports.datos.impDatos;
 import com.diego.esports.datos.intDatos;
 import com.diego.esports.modelo.dao.SceneManager;
 import com.diego.esports.modelo.entidades.Usuarios;
 import com.diego.esports.utils.Paths;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -19,77 +18,53 @@ import javafx.animation.Timeline;
 import javafx.scene.paint.*;
 import javafx.util.Duration;
 
-public class LoginController {
+public class RegistroController {
     private intDatos datos = new impDatos();
     //Objetos FXML
-    @FXML
-    public Pane backgroundPane;
-
-    @FXML
-    private TextField usernameField;
-
-    @FXML
-    private PasswordField passwordField;
-
-    @FXML
-    private Button loginButton;
-
-    @FXML
-    private Label lblRegistrarse;
+    @FXML public Pane backgroundPane;
+    @FXML private TextField usernameField;
+    @FXML private PasswordField passwordField;
+    @FXML private Button loginButton;
+    @FXML private Label lblRegistrarse;
+    @FXML private Label lblTitulo;
+    @FXML private TextField emailField;
+    @FXML private TextField nicknameField;
+    @FXML private Button registerButton;
 
     //Acciones FXML
-
-
+    private Timeline gradientAnimation;
+    @FXML
+    void registrarUsuario(ActionEvent event) {
+        String user = usernameField.getText();
+        String pass = passwordField.getText();
+        String email = emailField.getText();
+        String nick = nicknameField.getText();
+        datos.registrarUsuario(user, pass, email, nick);
+        limpiarCampos();
+        SceneManager.cambiarEscena(Paths.LoginView);
+    }
     //Inicializacion
     @FXML
     public void initialize() {
         createAnimatedBackground();
-        loginButton.setOnAction(e -> iniciarSesion());
-        lblRegistrarse.setOnMouseClicked(e -> registrarse());
+        lblTitulo.setOnMouseClicked(e -> SceneManager.cambiarEscena(Paths.LoginView));
         datos.existe();
 
     }
 
-    private Timeline gradientAnimation;
-
-    private void iniciarSesion() {
-        String user = usernameField.getText();
-        String pass = passwordField.getText();
-
-        Usuarios usuario = datos.encontrarUsuario(user, pass);
-
-        if (usuario != null) {
-            int rol = datos.saberRol(usuario.getId());
-
-
-            switch (rol) {
-                case 3:
-                    System.out.println("Inicio correcto Admin: " + rol);
-                    SceneManager.cambiarEscena(Paths.AdminView);
-                    break;
-                case 2:
-                    System.out.println("Inicio correcto organizador: " + rol );
-                    SceneManager.cambiarEscena(Paths.OrganizadorView);
-                    break;
-                case 1:
-                    System.out.println("Inicio correcto jugador: " + rol);
-                    SceneManager.cambiarEscena(Paths.JugadorView);
-                    break;
-                default:
-                    System.out.println("Rol desconocido");
-            }
-        } else {
-            System.out.println("Usuario o contraseña incorrectos");
-        }
+    private void limpiarCampos() {
+        usernameField.clear();
+        passwordField.clear();
+        emailField.clear();
+        nicknameField.clear();
     }
-
-    private void registrarse() {
-        SceneManager.cambiarEscena(Paths.Registrarse);
+    @FXML
+    void irCasa(ActionEvent event) {
+        SceneManager.cambiarEscena(Paths.LoginView);
     }
-
 
     private void createAnimatedBackground() {
-        // 🌈 Creamos un gradiente inicial con colores vivos
+        //Creamos un gradiente inicial con colores vivos
         Stop[] stops = new Stop[] {
                 new Stop(0, Color.web("#8A2BE2")),
                 new Stop(0.5, Color.web("#4B0082")),
@@ -99,7 +74,7 @@ public class LoginController {
         LinearGradient gradient = new LinearGradient(
                 0, 0, 1, 1, true, CycleMethod.NO_CYCLE, stops);
 
-       backgroundPane.setBackground(new Background(new BackgroundFill(gradient, null, null)));
+        backgroundPane.setBackground(new Background(new BackgroundFill(gradient, null, null)));
         //Timeline para "mover" las posiciones del gradiente
         final double[] offset = {0.0};
 

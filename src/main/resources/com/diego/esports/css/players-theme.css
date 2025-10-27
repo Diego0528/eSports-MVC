@@ -57,3 +57,12 @@
 .table-row-cell:filled:selected, .table-row-cell:filled:hover {
     -fx-background-color: rgba(138, 43, 226, 0.3);
 }
+
+
+.combo-box {
+    -fx-background-color: #1E1E26;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 8;
+    -fx-padding: 8 12;
+    -fx-prompt-text-fill: #ffffff;
+}

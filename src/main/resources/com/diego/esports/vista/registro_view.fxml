@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane stylesheets="@../css/login-theme.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.diego.esports.controlador.RegistroController">
+
+    <Pane fx:id="backgroundPane" styleClass="background">
+        <effect>
+            <GaussianBlur radius="8" />
+        </effect>
+    </Pane>
+
+    <!-- 🔹 Contenedor del formulario -->
+    <VBox alignment="CENTER" spacing="20" styleClass="login-box">
+        <Label fx:id="lblTitulo" styleClass="login-title" text="eSports Manager" />
+
+        <VBox alignment="CENTER_LEFT" spacing="10" styleClass="form">
+            <Label styleClass="form-label" text="Usuario" />
+            <TextField fx:id="usernameField" promptText="Ingresa tu usuario" styleClass="form-input" />
+         <Label styleClass="form-label" text="Nickname" />
+         <TextField fx:id="nicknameField" promptText="Ingresa tu nickname" styleClass="form-input" />
+         <Label styleClass="form-label" text="Email" />
+         <TextField fx:id="emailField" promptText="Ingresa tu email" styleClass="form-input" />
+
+            <Label styleClass="form-label" text="Contraseña" />
+            <PasswordField fx:id="passwordField" promptText="********" styleClass="form-input" />
+        </VBox>
+
+        <Button fx:id="registerButton" onAction="#registrarUsuario" styleClass="button-primary" text="Registrarse" />
+    </VBox>
+</StackPane>
