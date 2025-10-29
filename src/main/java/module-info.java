@@ -10,13 +10,11 @@ module esports {
     opens com.diego.esports.utils to javafx.base;
     opens com.diego.esports.modelo.dao to javafx.base;
     opens com.diego.esports.modelo.entidades to javafx.base;
-    opens com.diego.esports.datos to javafx.base;
     exports com.diego.esports.application;
     exports com.diego.esports.controlador;
     exports com.diego.esports.utils;
     exports com.diego.esports.modelo.dao;
     exports com.diego.esports.modelo.entidades;
-    exports com.diego.esports.datos;
 
 
 }

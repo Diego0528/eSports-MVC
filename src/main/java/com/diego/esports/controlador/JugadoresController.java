@@ -1,6 +1,6 @@
 package com.diego.esports.controlador;
 
-import com.diego.esports.datos.impDatos;
+import com.diego.esports.modelo.dao.JugadoresCrud;
 import com.diego.esports.modelo.dao.SceneManager;
 import com.diego.esports.modelo.entidades.Jugador;
 import com.diego.esports.utils.Paths;
@@ -11,12 +11,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import javax.swing.*;
 import java.util.List;
 
 public class JugadoresController {
 
-    private final impDatos datos = new impDatos();
+    private final JugadoresCrud datos = new JugadoresCrud();
     boolean tablaSeleccionado = false;
 
     public Button agregarJugadorbtn;

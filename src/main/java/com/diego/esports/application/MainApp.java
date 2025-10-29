@@ -1,7 +1,5 @@
 package com.diego.esports.application;
 
-import com.diego.esports.datos.impDatos;
-import com.diego.esports.datos.intDatos;
 import com.diego.esports.modelo.dao.SceneManager;
 import com.diego.esports.utils.Paths;
 import javafx.application.Application;
@@ -24,6 +22,7 @@ public class MainApp extends Application {
         primaryStage.setTitle("eSports");
         primaryStage.setScene(scene);
         primaryStage.show();
+
     }
 
     public static void main(String[] args) {

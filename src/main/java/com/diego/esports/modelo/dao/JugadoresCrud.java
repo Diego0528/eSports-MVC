@@ -1,4 +1,4 @@
-package com.diego.esports.datos;
+package com.diego.esports.modelo.dao;
 
 
 import com.diego.esports.modelo.entidades.Jugador;
@@ -10,15 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class impDatos implements intDatos {
+public class JugadoresCrud implements intJugadoresCRUD {
     public void existe() {
         if (Existe()) {
             System.out.println("Conexión a la base de datos establecida...\n");
-//            try {
-//                Thread.sleep(3000);
-//            } catch (InterruptedException e) {
-//                Thread.currentThread().interrupt();
-//            }
         } else {
             System.out.println("Error al conectar con la base de datos\n");
             System.exit(1);
@@ -169,7 +164,7 @@ public class impDatos implements intDatos {
             int errorCode = e.getErrorCode();
             String message = e.getMessage();
             if (errorCode == 51011) {
-                System.err.println("No se puede eliminar un administrador. (SQL Error " + errorCode + ")");
+                System.err.println("No se puede eliminar un administrador. (SQL Error " + errorCode +  ")");
             } else if (errorCode == 51010) {
                 System.err.println("Usuario no encontrado. (SQL Error " + errorCode + ")");
             } else {

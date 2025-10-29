@@ -36,6 +36,7 @@
 
             <Button styleClass="sidebar-button" text="🏠  Inicio" />
             <Button styleClass="sidebar-button" text="🎮  Torneos" />
+         <Button fx:id="btnPanelJuegos" onAction="#CrudJuegos" styleClass="sidebar-button" text="🎮  Juegos" />
             <Button styleClass="sidebar-button" text="👥  Equipos" />
             <Button fx:id="btnCrudJugadores" onAction="#CrudJugadores" styleClass="sidebar-button" text="🧑‍💻  Jugadores" />
             <Button styleClass="sidebar-button" text="📊  Estadísticas" />

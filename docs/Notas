@@ -1,2 +1,72 @@
 En base de datos, fecha de creacion de usuario; que solo guarde  dd/mm/yyyy y qu eno incluya horas
 eliminar de jugador el pais
+
+🎮 1. Módulo de gestión de jugadores y equipos (ADMIN) YA
+
+Consulta útil: listado de todos los jugadores y sus equipos.
+
+
+🏆 2. Módulo de torneos (ADMIN)
+
+Objetivo: registrar torneos con fechas, tipo y videojuego.
+
+Crear, listar, editar torneos.
+
+Relacionarlos con los juegos (tabla Juego).
+
+Permitir definir número de equipos participantes.
+
+📊 Consulta: listar todos los torneos activos o próximos.
+
+⚔️ 3. Módulo de partidas y resultados (ÁRBITRO)
+
+Objetivo: permitir al árbitro registrar los resultados de cada partida.
+
+Vista: lista de partidas pendientes con botón “Registrar resultado”.
+
+Controlador: PartidaController.
+
+Validación: no se puede registrar resultado dos veces.
+
+Consulta: partidos jugados, pendientes y clasificación actualizada.
+
+🧮 Esto cubre la parte de reportes y restricciones de la rúbrica.
+
+👤 4. Panel del jugador
+
+Objetivo: permitir al jugador ver su historial y próximas partidas.
+
+Consultar partidas jugadas, resultados, oponentes.
+
+Mostrar estadísticas personales (ganadas, perdidas).
+
+📜 Consulta: historial del jugador (joins entre Jugador, Partida, Resultado).
+
+📄 5. Reportes generales
+
+Objetivo: implementar al menos 3 consultas SQL directas.
+
+Ranking general del torneo (equipos con más victorias).
+
+Historial de un jugador.
+
+Próximas partidas o torneos activos.
+
+🧱 6. Extras opcionales (para destacar tu portafolio)
+
+Exportar reportes a PDF o CSV.
+
+Notificaciones visuales (mensajes o alertas en GUI).
+
+Dashboard con gráficos (usando JavaFX Charts).
+
+Animaciones suaves entre vistas (ya estás cerca con el SceneManager).
+
+💡 Recomendación de orden
+
+1️⃣ CRUD Jugadores y Equipos.
+2️⃣ CRUD Torneos.
+3️⃣ Asignar Partidas.
+4️⃣ Registrar Resultados.
+5️⃣ Consultas / Reportes.
+6️⃣ Extras visuales.

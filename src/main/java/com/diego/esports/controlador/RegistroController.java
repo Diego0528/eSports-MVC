@@ -1,8 +1,7 @@
 package com.diego.esports.controlador;
-import com.diego.esports.datos.impDatos;
-import com.diego.esports.datos.intDatos;
+import com.diego.esports.modelo.dao.JugadoresCrud;
+import com.diego.esports.modelo.dao.intJugadoresCRUD;
 import com.diego.esports.modelo.dao.SceneManager;
-import com.diego.esports.modelo.entidades.Usuarios;
 import com.diego.esports.utils.Paths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +18,7 @@ import javafx.scene.paint.*;
 import javafx.util.Duration;
 
 public class RegistroController {
-    private intDatos datos = new impDatos();
+    private intJugadoresCRUD datos = new JugadoresCrud();
     //Objetos FXML
     @FXML public Pane backgroundPane;
     @FXML private TextField usernameField;

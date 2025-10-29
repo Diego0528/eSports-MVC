@@ -298,3 +298,141 @@ LEFT JOIN dbo.Equipo e ON e.id_equipo = ej.id_equipo
 LEFT JOIN dbo.Torneo t ON t.id_torneo = e.id_torneo;
 GO
 
+CREATE PROCEDURE sp_AgregarJugador
+    @nombre_usuario NVARCHAR(100),
+    @email NVARCHAR(255),
+    @password_hash NVARCHAR(255),
+    @nickname NVARCHAR(100)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRANSACTION;
+
+    BEGIN TRY
+        -- 1. Crear usuario
+        INSERT INTO dbo.Usuario (nombre_usuario, email, contraseña)
+        VALUES (@nombre_usuario, @email, @password_hash);
+
+        DECLARE @id_usuario INT = SCOPE_IDENTITY();
+
+        -- 2. Crear jugador vinculado al usuario
+        INSERT INTO dbo.Jugador (id_usuario, nickname)
+        VALUES (@id_usuario, @nickname);
+
+        -- 3. Asignar rol 'jugador' automáticamente
+        DECLARE @id_rol INT = (SELECT id_rol FROM dbo.Rol WHERE nombre_rol = 'jugador');
+        IF @id_rol IS NOT NULL
+            INSERT INTO dbo.UsuarioRol (id_usuario, id_rol) VALUES (@id_usuario, @id_rol);
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH
+END;
+GO
+--Ejemplo
+EXEC sp_AgregarJugador 'Carlos', 'carlos@email.com', 'hash123', 'Carlitox';
+--
+
+GO
+
+CREATE OR ALTER PROCEDURE sp_ActualizarJugador
+    @id_usuario INT,
+    @nombre_usuario NVARCHAR(100) = NULL,
+    @email NVARCHAR(255) = NULL,
+    @nickname NVARCHAR(100) = NULL,
+    @estado NVARCHAR(20) = NULL,
+    @id_rol INT = NULL,
+    @password_hash NVARCHAR(255) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRANSACTION;
+
+    BEGIN TRY
+        -- Actualizar datos del usuario
+        UPDATE dbo.Usuario
+        SET 
+            nombre_usuario = COALESCE(@nombre_usuario, nombre_usuario),
+            email = COALESCE(@email, email),
+            contraseña = COALESCE(@password_hash, contraseña),
+            estado = COALESCE(@estado, estado)
+        WHERE id_usuario = @id_usuario;
+
+        -- Actualizar nickname en Jugador
+        UPDATE dbo.Jugador
+        SET nickname = COALESCE(@nickname, nickname)
+        WHERE id_usuario = @id_usuario;
+
+        -- Actualizar rol del usuario (si existe)
+        IF @id_rol IS NOT NULL
+        BEGIN
+            IF EXISTS (SELECT 1 FROM dbo.UsuarioRol WHERE id_usuario = @id_usuario)
+                UPDATE dbo.UsuarioRol SET id_rol = @id_rol WHERE id_usuario = @id_usuario;
+            ELSE
+                INSERT INTO dbo.UsuarioRol (id_usuario, id_rol) VALUES (@id_usuario, @id_rol);
+        END;
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH
+END;
+GO
+
+--Eliminar Jugaor
+
+CREATE OR ALTER PROCEDURE dbo.sp_EliminarJugador
+    @id_usuario INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION;
+
+    BEGIN TRY
+        -- 1) Validar existencia del usuario
+        IF NOT EXISTS (SELECT 1 FROM dbo.Usuario WHERE id_usuario = @id_usuario)
+            THROW 51010, 'Usuario no encontrado.', 1;
+
+        -- 2) Verificar si tiene rol 'admin'
+        IF EXISTS (
+            SELECT 1
+            FROM dbo.UsuarioRol ur
+            JOIN dbo.Rol r ON ur.id_rol = r.id_rol
+            WHERE ur.id_usuario = @id_usuario
+              AND r.nombre_rol = 'admin'
+        )
+        BEGIN
+            THROW 51011, 'No se puede eliminar un usuario con rol de administrador.', 1;
+        END
+
+        -- 3) Eliminar relaciones dependientes de forma explícita y segura
+        -- Primero: asociaciones a roles
+        DELETE FROM dbo.UsuarioRol WHERE id_usuario = @id_usuario;
+
+        -- Segundo: registros en EquipoJugador relacionados al jugador (si existen)
+        DELETE ej
+        FROM dbo.EquipoJugador ej
+        INNER JOIN dbo.Jugador j ON ej.id_jugador = j.id_jugador
+        WHERE j.id_usuario = @id_usuario;
+
+        -- Tercero: eliminar fila en Jugador
+        DELETE FROM dbo.Jugador WHERE id_usuario = @id_usuario;
+
+        -- Finalmente: eliminar el usuario
+        DELETE FROM dbo.Usuario WHERE id_usuario = @id_usuario;
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        -- Re-lanzar el error original para que el cliente lo reciba tal cual
+        THROW;
+    END CATCH
+END;
+GO

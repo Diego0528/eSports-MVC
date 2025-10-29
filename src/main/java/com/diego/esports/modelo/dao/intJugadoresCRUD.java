@@ -1,8 +1,8 @@
-package com.diego.esports.datos;
+package com.diego.esports.modelo.dao;
 
 import com.diego.esports.modelo.entidades.Usuarios;
 
-public interface intDatos{
+public interface intJugadoresCRUD {
     void existe();
     Usuarios encontrarUsuario(String buscar, String contrasena);
     int saberRol(int id);
