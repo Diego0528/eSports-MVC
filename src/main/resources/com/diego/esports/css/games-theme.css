@@ -1,0 +1,78 @@
+@import url("dark-theme.css");
+
+/* Header banner */
+.game-banner {
+    -fx-background-color: linear-gradient(to bottom right, rgba(10,10,12,0.9), rgba(20,18,25,0.6));
+    -fx-padding: 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 20, 0, 0, 6);
+    -fx-background-radius: 8;
+}
+
+/* Game title */
+.game-title {
+    -fx-fill: #00E5FF; /* accent for Clash Royale (cyan) */
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.game-subtitle {
+    -fx-fill: #BFC6D6;
+    -fx-font-size: 12px;
+}
+
+/* Tabs and filters */
+.game-tabs {
+    -fx-background-color: transparent;
+}
+
+.search-bar {
+    -fx-background-color: #121217;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 8;
+    -fx-prompt-text-fill: #888;
+}
+
+/* Cards grid */
+.cards-scroll {
+    -fx-background-color: transparent;
+}
+.card {
+    -fx-background-color: linear-gradient(#141418, #1B1B22);
+    -fx-background-radius: 12;
+    -fx-padding: 14;
+    -fx-pref-width: 320;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 4);
+}
+
+/* Card header */
+.card .card-title {
+    -fx-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+.card .card-sub {
+    -fx-fill: #A8A8B0;
+    -fx-font-size: 12px;
+}
+
+/* Buttons */
+.button-primary {
+    -fx-background-color: linear-gradient(#00D6FF, #00A3FF);
+    -fx-background-radius: 8;
+}
+.button-outline {
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(255,255,255,0.08);
+    -fx-text-fill: #DDEFFF;
+}
+
+/* Widgets */
+.widget {
+    -fx-background-color: #111217;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.45), 8, 0, 0, 3);
+}
+.widget-title {
+    -fx-fill: #8AD7FF;
+    -fx-font-weight: bold;
+}

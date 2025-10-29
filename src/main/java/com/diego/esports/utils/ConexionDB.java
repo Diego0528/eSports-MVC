@@ -5,12 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexionDB {
-    private static final String URL = "jdbc:sqlserver://ANDRJINOJIMENEZ\\SMSS:51901;"
+    private static final String URL = "jdbc:sqlserver://PHA-SISTEMAS-PC\\SMSS:51901;"
             + "databaseName=eSportsdb;"
             + "encrypt=false;"
             + "trustServerCertificate=true";
     private static final String USER = "sa";
-    private static final String PASSWORD = "admin2025";
+    private static final String PASSWORD = "man2025";
 
 
     public static Connection getConnection() throws SQLException {

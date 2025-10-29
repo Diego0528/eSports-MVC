@@ -23,7 +23,7 @@
             <TextField fx:id="searchField" promptText="Buscar jugador, equipo o torneo..." styleClass="search-bar" HBox.hgrow="ALWAYS" />
 
             <!-- PERFIL / USUARIO -->
-            <Button styleClass="button-primary" text="Perfil" />
+            <Button fx:id="btnSalir" onAction="#salirLogin" styleClass="button-primary" text="Salir" />
         </HBox>
     </top>
 
@@ -34,7 +34,7 @@
                 <Insets bottom="20" left="10" right="10" top="20" />
             </padding>
 
-            <Button styleClass="sidebar-button" text="🏠  Inicio" />
+            <Button fx:id="btnInicio" onAction="#Home" styleClass="sidebar-button" text="🏠  Inicio" />
             <Button styleClass="sidebar-button" text="🎮  Torneos" />
          <Button fx:id="btnPanelJuegos" onAction="#CrudJuegos" styleClass="sidebar-button" text="🎮  Juegos" />
             <Button styleClass="sidebar-button" text="👥  Equipos" />

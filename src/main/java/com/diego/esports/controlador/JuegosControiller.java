@@ -11,8 +11,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class JuegosControiller {
 
@@ -43,7 +45,7 @@ public class JuegosControiller {
     }
     @FXML
     void irCasa(javafx.event.ActionEvent event) {
-        SceneManager.cambiarEscena(com.diego.esports.utils.Paths.AdminView);
+        SceneManager.cambiarEscena(Paths.AdminView);
     }
 
     private VBox crearTarjetaJuego(Juego juego) {
@@ -65,7 +67,29 @@ public class JuegosControiller {
         nombre.setStyle("-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;");
 
         tarjeta.getChildren().addAll(imageView, nombre);
+        tarjeta.setOnMouseClicked(mouseEvent -> JuegoVista(juego.getNombre()));
         return tarjeta;
-
     }
+
+    private void JuegoVista(String nombreJuego) {
+        if(Objects.equals(nombreJuego, "Clash Royale")){
+            nombreJuego = "Clash";
+        }else if(Objects.equals(nombreJuego, "Dota 2")){
+            nombreJuego = "Dota";
+        }else if(Objects.equals(nombreJuego, "League of Legends")){
+            nombreJuego = "Lol";
+        }else if(Objects.equals(nombreJuego, "CS:GO")) {
+            nombreJuego = "CSGO";
+        }
+
+        try {
+            Field campo = Paths.class.getDeclaredField(nombreJuego + "View");
+            String ruta = (String) campo.get(null);
+            SceneManager.cambiarContenido(contenedorJuegos, ruta);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("No se encontró la vista: " + nombreJuego + "View");
+        }
+    }
+
 }

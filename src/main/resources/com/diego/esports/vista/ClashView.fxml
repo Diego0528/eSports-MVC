@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.diego.esports.controlador.ClashController"
+            stylesheets="@../css/games-theme.css">
+
+    <!-- HEADER: banner + logo + quick actions -->
+    <top>
+        <VBox>
+            <AnchorPane styleClass="game-banner">
+                <!-- banner image -->
+                <ImageView fx:id="bannerImage" pickOnBounds="true" fitHeight="160" fitWidth="1000" style="-fx-opacity: 0.95;" /><!-- preserveRatio="false" -->
+
+                <!-- overlay content on banner -->
+                <HBox spacing="12" alignment="CENTER_LEFT" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="20">
+                    <ImageView fx:id="logoImage" fitHeight="80" fitWidth="80" />
+                    <VBox>
+                        <Text text="Clash Royale" styleClass="game-title"/>
+                        <Text text="Arena battles, clans &amp; tournaments" styleClass="game-subtitle"/>
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="10" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="30" alignment="CENTER_RIGHT">
+                    <Button text="Seguir" styleClass="button-outline" fx:id="followBtn"/>
+                    <Button text="Crear Torneo" styleClass="button-primary" fx:id="createTournamentBtn"/>
+                </HBox>
+            </AnchorPane>
+
+            <!-- Tabs + filters -->
+            <HBox spacing="12" styleClass="game-tabs">
+                <padding>
+                    <Insets top="12" right="20" bottom="12" left="20"/>
+                </padding>
+
+                <TabPane fx:id="tabPane" side="TOP" tabClosingPolicy="UNAVAILABLE" prefHeight="44">
+                    <tabs>
+                        <Tab text="Overview" fx:id="tabOverview"/>
+                        <Tab text="Ladders" fx:id="tabLadders"/>
+                        <Tab text="Torneos" fx:id="tabTournaments"/>
+                        <Tab text="Live" fx:id="tabLive"/>
+                        <Tab text="Estadísticas" fx:id="tabStats"/>
+                    </tabs>
+                </TabPane>
+
+                <Region HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="searchField" promptText="Buscar torneo, equipo o jugador..." styleClass="search-bar"/>
+                <ChoiceBox fx:id="regionChoice" prefWidth="130"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- MAIN AREA: two columns -->
+    <center>
+        <HBox spacing="20" styleClass="game-content">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- LEFT: content area -->
+            <VBox fx:id="leftColumn" spacing="12" prefWidth="720">
+                <StackPane fx:id="contentStack" styleClass="content-stack">
+                    <!-- PLACEHOLDER: Overview card grid -->
+                    <ScrollPane fitToWidth="true" styleClass="cards-scroll">
+                        <FlowPane fx:id="cardsFlow" hgap="14" vgap="14">
+                            <padding>
+                                <Insets top="10" right="10" bottom="10" left="10"/>
+                            </padding>
+                        </FlowPane>
+                    </ScrollPane>
+                </StackPane>
+            </VBox>
+
+            <!-- RIGHT: side widgets -->
+            <VBox fx:id="rightColumn" spacing="12" prefWidth="320">
+
+                <VBox styleClass="widget" spacing="8">
+                    <padding>
+                        <Insets top="12" right="12" bottom="12" left="12"/>
+                    </padding>
+                    <Text text="Top Players" styleClass="widget-title"/>
+                    <ListView fx:id="topPlayersList" prefHeight="180"/>
+                </VBox>
+
+                <VBox styleClass="widget" spacing="8">
+                    <padding>
+                        <Insets top="12" right="12" bottom="12" left="12"/>
+                    </padding>
+                    <Text text="Próximos Torneos" styleClass="widget-title"/>
+                    <ListView fx:id="upcomingTournaments" prefHeight="150"/>
+                </VBox>
+
+                <VBox styleClass="widget" spacing="8">
+                    <padding>
+                        <Insets top="12" right="12" bottom="12" left="12"/>
+                    </padding>
+                    <Text text="Leaderboard" styleClass="widget-title"/>
+                    <TableView fx:id="leaderboardTable" prefHeight="200">
+                        <columns>
+                            <TableColumn text="#" prefWidth="50"/>
+                            <TableColumn text="Jugador" prefWidth="150"/>
+                            <TableColumn text="Puntos" prefWidth="90"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

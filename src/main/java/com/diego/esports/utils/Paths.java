@@ -13,6 +13,15 @@ public class Paths {
     public static final String JugadoresCTRL = "/com/diego/esports/vista/jugadores_ctrl.fxml";
     public static final String Registrarse = "/com/diego/esports/vista/registro_view.fxml";
 
-    // Gestor de Jugos
+    // Gestor de Juegos
     public static final String JuegosCTRL = "/com/diego/esports/vista/juegos_view.fxml";
+
+    //Vista Juegos
+    public static final String ValorantView = "/com/diego/esports/vista/ValorantView.fxml";
+    public static final String ClashView = "/com/diego/esports/vista/ClashView.fxml";
+    public static final String CSGOView = "/com/diego/esports/vista/ValorantView.fxml";
+    public static final String LolView = "/com/diego/esports/vista/ValorantView.fxml";
+    public static final String DotaView = "/com/diego/esports/vista/ValorantView.fxml";
+
+
 }
